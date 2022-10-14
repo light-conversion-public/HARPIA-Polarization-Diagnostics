@@ -1,0 +1,16 @@
+{
+  "app_name": "HARPIA polarization diagnostics",
+  "description": "Controls rotating Glan-Taylor unit and registers output on photodiode",
+  "documentation_link": "README.md",
+  "version": "1.2",
+  "guid": "",
+  "connections": [
+    {
+      "connection_id": "harpia",
+      "name": "HARPIA REST",
+      "required": true,
+      "type": "REST",
+      "target": "HARPIA"
+    }
+  ]
+}
