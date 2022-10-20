@@ -44,5 +44,3 @@ Advanced settings can be changed in the 'settings.json' file
  - 'signal': Signal "AuxiliarySignal" (default), "PumpPhotodetectorSignal",
    'ProbePhotodetectorSignal' or "SpectrometerSignal" of the selected HARPIA 
    detector
- - 'spectra_per_acquisition': (Default 5) number of spectra per acquisition of
-   a single rotation point
