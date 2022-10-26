@@ -116,6 +116,8 @@ class Worker(QObject):
                 
         diag_unit.stop()
         
+        diag_unit.set_angle_blocking(0.0)
+        
         harpia.set_spectra_per_acquisition(old_spectra_per_acquisition)
 
         self.finished.emit()

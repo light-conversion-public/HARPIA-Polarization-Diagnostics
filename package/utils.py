@@ -137,7 +137,11 @@ class PolarizationDiagnosticsUnit:
 
         target = round(pos + (angle - current_angle) / 360.0 * self.reduction * 200 * (2**self.step_mode))
         self.mb.set_register(self.mb.reg_dict['GoTo'][1], self.motor_index, target)
-     
+
+    def set_angle_blocking(self, angle):
+        self.set_angle(angle)
+        time.sleep(0.5)
+        
     def set_current_angle_to_zero(self):
         self.mb.set_register(self.mb.reg_dict['AbsPos'][1], self.motor_index, 0)
     

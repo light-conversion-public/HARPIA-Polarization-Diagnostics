@@ -1,0 +1,7 @@
+{
+    "app_name" : "Minimal project",
+    "guid" : "E1C17310-59B7-46B1-86E4-171DC741151B",
+    "connections": [
+        {"connection_id": "my_connection_1", "required" : true, "type" : "REST", "target": "HARPIA", "name" : "HARPIA REST"}
+    ]
+}
