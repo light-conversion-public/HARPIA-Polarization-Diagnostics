@@ -39,7 +39,8 @@ which is an optional extension of HARPIA Spectroscopy System.
 Advanced settings can be changed in the 'settings.json' file
  - 'can_id': (default 448) CAN bus id (448 for primary, 456 - secondary, 
    464 - TB, 472- TF motor boards)
- - 'reduction'. Gear ratio of the PDU
+ - 'reduction': Gear ratio of the PDU
+ - 'zero_angle': Angle between the zero (horizontal) and reset angle
  - 'motor_index': (default 2) Motor index of the corresponding motor  board
  - 'signal': Signal "AuxiliarySignal" (default), "PumpPhotodetectorSignal",
    'ProbePhotodetectorSignal' or "SpectrometerSignal" of the selected HARPIA 
