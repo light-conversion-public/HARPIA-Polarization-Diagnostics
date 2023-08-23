@@ -58,8 +58,7 @@ can_sender = HarpiaCanSender(harpia)
 lcan = LepreCanDevice(None, can_id)
 mb = MotorBoard(can_id, can_sender)
 
-diag_unit = PolarizationDiagnosticsUnit(mb, motor_index, reduction, settings.get("speed") or 10000, r'package/Sanyo Denki SH2281-5631 (rotary).json')
-
+diag_unit = PolarizationDiagnosticsUnit(mb, motor_index, reduction, settings.get("speed") or 10000, r'package/Sanyo Denki SH2281-5631 (rotary).json', settings.get("zero_angle") or 0.0)
 
 angles = np.array([])
 intensities = np.array([])

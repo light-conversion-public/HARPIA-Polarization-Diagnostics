@@ -110,13 +110,14 @@ def parse_int_from_response(response):
 
 
 class PolarizationDiagnosticsUnit:
-    def __init__ (self, mb, motor_index, reduction, speed, motor_config):
+    def __init__ (self, mb, motor_index, reduction, speed, motor_config, zero_angle = 0.0):
         self.mb = mb
         self.motor_index = motor_index
         self.speed = speed
         self.motor_config = motor_config
         self.step_mode = parse_int_from_response(mb.get_register(mb.reg_dict['StepMode'][1], self.motor_index))
         self.reduction = reduction
+        self.zero_angle = zero_angle
 
     def stop(self):
         self.mb.set_register(self.mb.reg_dict['Stop'][1], self.motor_index, 0)
@@ -140,16 +141,26 @@ class PolarizationDiagnosticsUnit:
 
     def set_angle_blocking(self, angle):
         self.set_angle(angle)
-        time.sleep(0.5)
+        self.wait_until_stopped()
         
     def set_current_angle_to_zero(self):
         self.mb.set_register(self.mb.reg_dict['AbsPos'][1], self.motor_index, 0)
-    
+
+    def wait_until_stopped(self):
+        self.mb.wait_until_stopped(self.motor_index)
+
     def reset(self):
         self.mb.set_register(self.mb.reg_dict['HardHiZ'][1], self.motor_index, 1)
-        self.mb.setup_motor(self.motor_index, self.motor_config)
+        self.mb.setup_motor(self.motor_index, self.motor_config)        
         self.step_mode = parse_int_from_response(self.mb.get_register(self.mb.reg_dict['StepMode'][1], self.motor_index))
         
-        self.mb.set_register(self.mb.reg_dict['RunReverse'][1], self.motor_index, 50000)
-        time.sleep(2)
-        self.set_current_angle_to_zero()        
+        self.mb.set_register(self.mb.reg_dict['LSEnable'][1], self.motor_index, 3)
+        self.mb.set_register(self.mb.reg_dict['RunReverse'][1], self.motor_index, 50000)        
+        
+        self.wait_until_stopped()
+        
+        self.mb.set_register(self.mb.reg_dict['LSEnable'][1], self.motor_index, 0)        
+        self.set_current_angle_to_zero()
+        
+        self.set_angle_blocking(self.zero_angle)
+        self.set_current_angle_to_zero()
