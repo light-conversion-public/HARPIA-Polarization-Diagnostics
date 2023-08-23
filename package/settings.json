@@ -1,7 +1,7 @@
 {
  "can_id": 448,
  "reduction": 3.428571428571429,
- "motor_index": 3,
+ "motor_index": 4,
  "signal" : "ProbePhotodetectorSignal",
  "spectra_per_acquisition": 1,
  "speed" : 20000

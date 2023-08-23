@@ -1,15 +1,16 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-Created on Thu May 18 17:45:11 2017
-
-@author: butkus
-"""
+#==========================================================================
+# 
+#--------------------------------------------------------------------------
+# Copyright (c) 2022 Light Conversion, UAB
+# All rights reserved.
+# www.lightcon.com
+#==========================================================================
 import numpy
 from enum import Enum, IntEnum
 import time
 import struct
-
-# from Komodo import Komodo
 
 from collections import deque
 from threading import Lock        
