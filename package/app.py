@@ -14,10 +14,7 @@ import os
 import sys    
 import time
 import numpy as np
-import lightcon.style
 import json
-
-# lightcon.style.apply_style()
 
 sys.path.append(os.path.dirname(os.path.realpath(sys.argv[0])))
 os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
@@ -131,7 +128,6 @@ class Worker(QObject):
 class MplCanvas(FigureCanvasQTAgg):
 
     def __init__(self, parent=None, width=5, height=4, dpi=100):
-        lightcon.style.apply_style()
         self.fig = Figure(figsize=(width, height), dpi=dpi)                
         
         plt.ion()
@@ -150,8 +146,6 @@ class MplCanvas(FigureCanvasQTAgg):
         self.ax.set_xticks(np.arange(0.0, 360.0, 10) / 180.0 * np.pi)
         self.ax.yaxis.set_ticklabels([])
         
-        lightcon.style.add_watermark(self.ax)
-                
         super(MplCanvas, self).__init__(self.fig)
         
 class MainWindow(QMainWindow):
