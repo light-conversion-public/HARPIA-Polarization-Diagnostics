@@ -2,7 +2,7 @@
   "app_name": "HARPIA polarization diagnostics",
   "description": "Controls Polarization Diagnostics Unit and registers output on a photodiode",
   "documentation_link": "README.md",
-  "version": "1.3",
+  "version": "1.4.1",
   "homepage": "https://github.com/light-conversion-public/HARPIA-Polarization-Diagnostics.git",
   "guid": "",
   "connections": [

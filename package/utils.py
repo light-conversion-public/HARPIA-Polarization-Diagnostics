@@ -9,7 +9,6 @@
 #==========================================================================
 import numpy as np
 import matplotlib.pyplot as plt
-import lightcon.style
 
 import json
 import time
@@ -70,7 +69,7 @@ class MotorBoard:
             time.sleep(0.05)
     def set_register(self, registerAddress, index = 0, value = 0):
         if type(value) == float:
-            data4bytes = lcan.float_to_hex(value)
+            data4bytes = self.lcan.float_to_hex(value)
         if type(value) == int:
             data4bytes = value
         frame = self.lcan.GenerateDataFrame(FrameType.SetRegisterCommandFrame, registerAddress, index, 0x00, data4bytes)
@@ -105,6 +104,7 @@ class MotorBoard:
     
     def reset_motor(self, index):
         self.set_register(self.reg_dict['RunForward'][1], self.speed)
+
         
 
 class HarpiaCanSender:
